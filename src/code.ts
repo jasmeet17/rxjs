@@ -22,6 +22,13 @@ var observer = observale.subscribe(
                 () => addItem("Completed")
               );
 
+var observer2 = observale.subscribe(
+  (x:any) => addItem(x),
+);
+
+// this way both observers can be unsubscribed
+observer.add(observer2)
+
 setTimeout(()=>{
   observer.unsubscribe()
 }, 6001)
